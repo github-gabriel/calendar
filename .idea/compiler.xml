@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Calendar" options="--add-modules java.desktop,java.base" />
+      <module name="Calender" options="--add-modules java.base,java.desktop" />
+    </option>
+  </component>
+</project>
