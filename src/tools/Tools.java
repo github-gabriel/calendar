@@ -1,12 +1,10 @@
 package tools;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.time.YearMonth;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import gui.Window;
@@ -16,9 +14,8 @@ public final class Tools {
 
 	public static int getDaysInMonth(int month) {
 		month += 1;
-		YearMonth yearMonthObject = YearMonth.of(Settings.year, month);
-		int daysInMonth = yearMonthObject.lengthOfMonth();
-		return daysInMonth;
+		YearMonth yearMonthObject = YearMonth.of(Settings.YEAR, month);
+		return yearMonthObject.lengthOfMonth();
 	}
 
 	public static void refreshDays(JPanel panel, int days, Window window) {
@@ -27,8 +24,8 @@ public final class Tools {
 
 		for (int i = 0; i < days + 1; i++) {
 
-			if (i == Settings.TODAYS_DAY && window.getMonthsPanel().getMonthIndex() == Settings.TODAYS_MONTH
-					&& Settings.year == Settings.TODAYS_YEAR) {
+			if (i == Settings.CURRENT_DAY && window.getMonthsPanel().getMonthIndex() == Settings.CURRENT_MONTH
+					&& Settings.YEAR == Settings.CURRENT_YEAR) {
 
 				JButton button = new JButton(String.valueOf(i));
 				button.setFont(Settings.BUTTON_FONT);

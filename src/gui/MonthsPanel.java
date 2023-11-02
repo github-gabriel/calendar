@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
@@ -23,9 +22,9 @@ public class MonthsPanel extends JPanel implements ActionListener {
 	private JButton buttonLeft, buttonRight;
 	private JTextField textField;
 	private int monthIndex = Calendar.getInstance().get(Calendar.MONTH);
-	private Window window;
+	private final Window window;
 	private JLabel timeLabel;
-	private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+	private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	public MonthsPanel(Window window) {
 
@@ -47,7 +46,7 @@ public class MonthsPanel extends JPanel implements ActionListener {
 		buttonLeft.setPreferredSize(new Dimension(Settings.BUTTON_HEIGHT, Settings.BUTTON_HEIGHT));
 		panel.add(buttonLeft);
 
-		textField = new JTextField(Settings.months[monthIndex] + "-" + Settings.year);
+		textField = new JTextField(Settings.months[monthIndex] + "-" + Settings.YEAR);
 		textField.setEditable(false);
 		textField.setHorizontalAlignment(JTextField.CENTER);
 		textField.setFont(Settings.TEXTFIELD_FONT);
@@ -107,9 +106,9 @@ public class MonthsPanel extends JPanel implements ActionListener {
 				monthIndex--;
 			} else {
 				monthIndex = 11;
-				Settings.year--;
+				Settings.YEAR--;
 			}
-			textField.setText(Settings.months[monthIndex] + "-" + Settings.year);
+			textField.setText(Settings.months[monthIndex] + "-" + Settings.YEAR);
 			Tools.refreshDays(window.getDaysPanel(), Tools.getDaysInMonth(monthIndex), window);
 			window.getDaysPanel().revalidate();
 			window.getDaysPanel().repaint();
@@ -120,9 +119,9 @@ public class MonthsPanel extends JPanel implements ActionListener {
 				monthIndex++;
 			} else {
 				monthIndex = 0;
-				Settings.year++;
+				Settings.YEAR++;
 			}
-			textField.setText(Settings.months[monthIndex] + "-" + Settings.year);
+			textField.setText(Settings.months[monthIndex] + "-" + Settings.YEAR);
 			Tools.refreshDays(window.getDaysPanel(), Tools.getDaysInMonth(monthIndex), window);
 			window.getDaysPanel().revalidate();
 			window.getDaysPanel().repaint();
